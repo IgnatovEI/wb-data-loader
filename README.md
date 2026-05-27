@@ -13,31 +13,35 @@
 Если вам нужно только посмотреть результат, без локального запуска:
 
 1. Клонируйте репозиторий:
-   git clone https://github.com/IgnatovEI/wb-data-loader
-   cd wb-data-loader
+    ```bash
+    git clone https://github.com/IgnatovEI/wb-data-loader
+    cd wb-data-loader
 
 2. Установите зависимости:
-   composer install
+    ```bash
+    composer install
 
 3. Создайте файл .env (из .env.example) и пропишите подключение к удалённой базе:
-   DB_CONNECTION=mysql
-   DB_HOST=v91729h3.beget.tech
-   DB_PORT=3306
-   DB_DATABASE=v91729h3_bd
-   DB_USERNAME=v91729h3_bd
-   DB_PASSWORD=jbCyrmvnyA2!
+      ```php
+      DB_CONNECTION=mysql
+      DB_HOST=v91729h3.beget.tech
+      DB_PORT=3306
+      DB_DATABASE=v91729h3_bd
+      DB_USERNAME=v91729h3_bd
+      DB_PASSWORD=jbCyrmvnyA2!
 
    > Прямое внешнее подключение к MySQL ограничено бесплатным тарифом.
 
 4. Сгенерируйте ключ приложения:
-   php artisan key:generate
+    ```bash
+    php artisan key:generate
 
 5. Миграции выполнять НЕ НУЖНО – таблицы уже созданы и заполнены данными.
 
 6. Для просмотра данных откройте phpMyAdmin:
-   https://free5.beget.com/phpMyAdmin
-   Логин: v91729h3_bd
-   Пароль: jbCyrmvnyA2!
+- https://free5.beget.com/phpMyAdmin
+- Логин: v91729h3_bd
+- Пароль: jbCyrmvnyA2!
 
    В интерфейсе выберите базу v91729h3_bd и смотрите таблицы sales, orders, stocks, incomes.
 
@@ -45,20 +49,23 @@
 
 Если хотите запустить проект полностью и загрузить данные самостоятельно:
 
-1. Клонируйте репозиторий, установите зависимости (см. выше).
+1. Клонируйте репозиторий.
 
 2. Создайте локальную базу данных MySQL и пропишите её в .env:
-   DB_DATABASE=wb_db
-   DB_USERNAME=root
-   DB_PASSWORD=password
+    ```php
+    DB_DATABASE=wb_db
+    DB_USERNAME=root
+    DB_PASSWORD=password
 
 3. Выполните миграции:
-   php artisan migrate
+    ```bash
+    php artisan migrate
 
 4. Загрузите данные из API командами:
-   php artisan wb:fetch 2025-06-01 2025-06-30
-   php artisan wb:fetch 2025-07-01 2025-07-31
-   php artisan wb:fetch 2026-05-26
+    ```bash
+    php artisan wb:fetch 2025-06-01 2025-06-30
+    php artisan wb:fetch 2025-07-01 2025-07-31
+    php artisan wb:fetch 2026-05-26
 
    После этого все таблицы будут наполнены актуальными записями.
 
@@ -67,9 +74,9 @@
 Команда `wb:fetch` принимает дату начала и, опционально, дату окончания.
 Примеры:
 
-   php artisan wb:fetch 2025-06-01 2025-06-30   # продажи, заказы, доходы за июнь
-   php artisan wb:fetch 2025-07-01 2025-07-31   # доходы за июль
-   php artisan wb:fetch 2026-05-26              # склады
+- php artisan wb:fetch 2025-06-01 2025-06-30   # продажи, заказы, доходы за июнь
+- php artisan wb:fetch 2025-07-01 2025-07-31   # доходы за июль
+- php artisan wb:fetch 2026-05-26              # склады
 
 Перед вставкой данные за указанный период удаляются, чтобы избежать дубликатов.
 
@@ -82,5 +89,5 @@
 
 ## Контакты
 
-Telegram: @ignatovei
-GitHub: https://github.com/IgnatovEI
+- Telegram: @ignatovei
+- GitHub: https://github.com/IgnatovEI
